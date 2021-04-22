@@ -1,5 +1,6 @@
 package com.spring.mvc2.data_transfer.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -112,6 +113,23 @@ public class ViewToConrtroller {
 	
 	 */
 	
+	@RequestMapping(value="/transfer4")
+	public String transfer4(@RequestParam(name="birthY", defaultValue="2021") String birthY,
+							@RequestParam(name="birthM", defaultValue="1") String birthM,
+							@RequestParam(name="birthD", defaultValue="1") String birthD,
+							@RequestParam(name="birthGn", defaultValue="2") String birthGn) {
+		
+		Map<String, String> memberMap = new HashMap<String, String>();
+		
+		memberMap.put("birthY", birthY);
+		memberMap.put("birthM", birthM);
+		memberMap.put("birthD", birthD);
+		memberMap.put("birthGn", birthGn);
+		
+		memberDAO.joinMember(memberMap);
+		
+		return "redirect:/cTov/list1";
+	}
 	
 	/* 
 	 * 예시 5) [ 특정 값만 입력받기 ] parameter에 직접 name값만 입력
@@ -119,5 +137,13 @@ public class ViewToConrtroller {
 	 * 메서드의 파라미터에 name값을 직접 입력하여 파라메타에 접근이 가능하지만 , 
 	 * 가독성 향상 및 코드의 통일성을 위해 @RequestParam 어노테이션 사용을 권장한다.
 	 */
+	
+	@RequestMapping(value="/transfer5")
+	public String transfer5(String id, String pw, String name) {
+		
+		memberDAO.joinMember(id, pw, name);
+		
+		return "redirect:/cTov/list1";
+	}
 
 }
