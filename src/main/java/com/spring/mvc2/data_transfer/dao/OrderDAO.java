@@ -33,5 +33,25 @@ public class OrderDAO {
 	public List<Map<String, Object>> selectData3(){
 		return sqlSession.selectList("order.select3");
 	}
+	
+	//Mapper >> DAO 전송 예시3) Map 데이터 전송 : Map을 받아오는 List
+	public List<Map<String, Object>> selectData4(){
+		return sqlSession.selectList("order.select4");
+	}
+	
+	// DAO > Mapper 전송 예시1) 단일 데이터 전송
+	public void insertOne(String productName) {
+		sqlSession.insert("order.insertOneData" , productName);
+	}
+
+	// DAO > Mapper 전송 예시2) DTO 클래스 전송
+	public void insertDTO(OrderDTO oDto) {
+		sqlSession.insert("order.insertDTO" , oDto);
+	}
+	
+	// DAO > Mapper 전송 예시3) Map 데이터 전송
+	public void insertMap(Map<String, String> orderMap) {
+		sqlSession.insert("order.insertMap",orderMap);
+	}
 
 }

@@ -10,48 +10,58 @@ import com.spring.mvc2.data_transfer.dao.OrderDAO;
 @Controller
 @RequestMapping("mTod")
 public class MapperToDAO {
-	
+
 	@Autowired
 	private OrderDAO orderDAO;
-	
-	@RequestMapping(value="/orderList")
+
+	@RequestMapping(value = "/orderList")
 	public String orderList(Model model) {
-		
+
 		model.addAttribute("from", "orderList");
 		model.addAttribute("orderList", orderDAO.selectAllData());
-		
+
 		return "order/orderList";
-		
+
 	}
-	
-	@RequestMapping(value="/selectData1")
+
+	@RequestMapping(value = "/selectData1")
 	public String selectData1(Model model) {
-		
+
 		model.addAttribute("from", "selectData1");
 		model.addAttribute("rowCount", orderDAO.selectData1());
-		
+
 		return "order/select1";
-		
+
 	}
-	
-	@RequestMapping(value="/selectData2")
+
+	@RequestMapping(value = "/selectData2")
 	public String selectData2(Model model) {
-		
+
 		model.addAttribute("from", "selectData2");
 		model.addAttribute("orderList", orderDAO.selectData2());
-		
+
 		return "order/select2";
-		
+
 	}
-	
-	@RequestMapping(value="/selectData3")
+
+	@RequestMapping(value = "/selectData3")
 	public String selectData3(Model model) {
-		
+
 		model.addAttribute("from", "selectData3");
 		model.addAttribute("orderList", orderDAO.selectData3());
-		
+
 		return "order/select3";
+
+	}
 	
+	@RequestMapping(value = "/selectData4")
+	public String selectData4(Model model) {
+
+		model.addAttribute("from", "selectData4");
+		model.addAttribute("orderList", orderDAO.selectData4());
+
+		return "order/select3";
+
 	}
 
 }
